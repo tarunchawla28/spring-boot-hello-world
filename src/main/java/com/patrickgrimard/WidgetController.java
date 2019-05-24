@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WidgetController {
 
     @RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public String index() {
-        return "Hello World";
+    public Widget index() {
+        return new Widget("green", 10, 7);
     }
 }
