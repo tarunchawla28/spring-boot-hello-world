@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by XTL on 8/14/2014.
  */
-@RequestMapping("/api")
+@RequestMapping("/")
 @RestController
 public class WidgetController {
 
