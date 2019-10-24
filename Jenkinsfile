@@ -1,31 +1,11 @@
 pipeline {
-    agent none 
+    agent {
+        docker { image 'node:7-alpine' }
+    }
     stages {
-      //  stage("Fix the permission issue") {
-
-        //    agent any
-
-          //  steps {
-            //    sh "sudo chown jenkins:jenkins /var/run/docker.sock"
-            //}
-        //}
-        stage('Example Build') {
-            agent { 
-                docker {
-                image 'maven:3-alpine'
-                } 
-            } 
+        stage('Test') {
             steps {
-                echo 'Hello, Maven'
-               // sh 'mvn --version'
-                sh 'sh ls -l'
-            }
-        }
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
+                sh 'node --version'
             }
         }
     }
