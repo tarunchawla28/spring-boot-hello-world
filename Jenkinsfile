@@ -5,7 +5,7 @@ pipeline {
 
     stages {
         stage('Example Build') {
-            agent { docker 'maven:3-alpine' } 
+            agent { docker 'maven:3.3-jdk-8' } 
             steps {
                 sh "ls"
                 
