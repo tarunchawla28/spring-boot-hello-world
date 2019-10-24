@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Example Build') {
             agent { 
-                docker 'maven:3-alpine' 
+                docker {
+                image 'maven:3-alpine'
+                args '-u root:sudo -v $HOME/workspace/YorbitProject:/YorbitProject'
+                } 
             } 
             steps {
                 echo 'Hello, Maven'
