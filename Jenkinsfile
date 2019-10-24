@@ -1,19 +1,19 @@
 pipeline {
     agent none 
     stages {
-        stage("Fix the permission issue") {
+      //  stage("Fix the permission issue") {
 
-            agent any
+        //    agent any
 
-            steps {
-                sh "sudo chown jenkins:jenkins /var/run/docker.sock"
-            }
-        }
+          //  steps {
+            //    sh "sudo chown jenkins:jenkins /var/run/docker.sock"
+            //}
+        //}
         stage('Example Build') {
             agent { 
                 docker {
                 image 'maven:3-alpine'
-                //args '-u root:sudo -v $HOME/workspace/YorbitProject:/YorbitProject'
+                args '-u root:jenkins -v $HOME/workspace/YorbitProject:/YorbitProject'
                 } 
             } 
             steps {
