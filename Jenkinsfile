@@ -13,7 +13,7 @@ pipeline {
             agent { 
                 docker {
                 image 'maven:3-alpine'
-                args '-u root:jenkins -v $HOME/workspace/YorbitProject:/YorbitProject'
+                args '-u jenkins:docker -v $HOME/workspace/YorbitProject:/YorbitProject'
                 } 
             } 
             steps {
