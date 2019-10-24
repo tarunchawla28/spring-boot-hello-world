@@ -1,21 +1,14 @@
 pipeline {
     //agent none 
-    //agent { docker 'maven:3-alpine' } 
-    agent any
+   // agent { docker 'maven:3-alpine' } 
+   // agent any
 
     stages {
-        
-        stage('Example Build 1') {
-            steps {
-                sh 'mvn -B clean verify'
-            }
-        
-        }
-        
         stage('Example Build') {
             agent { docker 'maven:3-alpine' } 
             steps {
                 echo 'Hello, Maven'
+                sh 'export PATH=/bin/bash:$PATH'
                 sh 'ls'
                 
             }
