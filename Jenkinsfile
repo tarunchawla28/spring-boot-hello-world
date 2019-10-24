@@ -1,14 +1,11 @@
 pipeline {
     agent none 
-   // agent { docker 'maven:3-alpine' } 
-   // agent any
-
     stages {
         stage('Example Build') {
-            agent { docker 'maven:3.5.2-jdk-8' } 
+            agent { docker 'maven:3-alpine' } 
             steps {
-                sh "ls"
-                
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
         }
         stage('Example Test') {
