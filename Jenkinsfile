@@ -1,12 +1,14 @@
 pipeline {
     agent {
-        docker { image 'node:7-alpine' }
+        docker {
+            image 'maven:3-alpine'
+            args '-v $HOME/.m2:/root/.m2'
+        }
     }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                echo "$HOME"
-                sh -c 'node --version'
+                sh 'mvn -B'
             }
         }
     }
