@@ -6,7 +6,7 @@ pipeline {
             agent any
 
             steps {
-                sh "sudo chown root:jenkins /var/run/docker.sock"
+                sh "sudo chown jenkins:jenkins /var/run/docker.sock"
             }
         }
         stage('Example Build') {
