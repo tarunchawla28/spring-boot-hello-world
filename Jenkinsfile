@@ -7,9 +7,7 @@ pipeline {
         stage('Example Build') {
             agent { docker 'maven:3-alpine' } 
             steps {
-                echo 'Hello, Maven'
-                sh 'export PATH=/bin/bash:$PATH'
-                sh 'ls'
+                sh "ls"
                 
             }
         }
