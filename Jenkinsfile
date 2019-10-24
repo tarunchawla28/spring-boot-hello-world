@@ -9,7 +9,7 @@ pipeline {
                 sh 'mvn -B clean verify'
             }
         
-        
+        }
         
         stage('Example Build') {
             agent { docker 'maven:3-alpine' } 
