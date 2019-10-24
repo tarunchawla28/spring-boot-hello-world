@@ -17,7 +17,7 @@ pipeline {
             } 
             steps {
                 echo 'Hello, Maven'
-                sh 'sudo ls'
+                sh 'mvn --version'
             }
         }
         stage('Example Test') {
