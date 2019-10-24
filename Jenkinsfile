@@ -1,6 +1,16 @@
 pipeline {
-    agent none 
+    //agent none 
+    agent { docker 'maven:3-alpine' } 
+
     stages {
+        
+        stage('Example Build') {
+            steps {
+                sh 'mvn -B clean verify'
+            }
+        
+        
+        
         stage('Example Build') {
             agent { docker 'maven:3-alpine' } 
             steps {
