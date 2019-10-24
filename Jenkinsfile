@@ -4,7 +4,7 @@ pipeline {
 
     stages {
         
-        stage('Example Build') {
+        stage('Example Build 1') {
             steps {
                 sh 'mvn -B clean verify'
             }
