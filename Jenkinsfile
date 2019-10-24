@@ -5,7 +5,9 @@ pipeline {
             agent { docker 'maven:3-alpine' } 
             steps {
                 echo 'Hello, Maven'
+                script {
                 sh 'ls'
+                }
             }
         }
         stage('Example Test') {
