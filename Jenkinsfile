@@ -6,8 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "$HOME"
-                echo "\$(ls)"
-                sh 'node --version'
+                sh -c 'node --version'
             }
         }
     }
