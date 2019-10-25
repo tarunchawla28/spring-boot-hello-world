@@ -11,7 +11,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'echo hello'
+        sh 'ls -la'
+        sh 'whoami'
         sh 'node --version'
       }
     }
