@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'node:6-alpine'
-      args '-u root:sudo -v /var/run/docker.sock:/var/run/docker.sock'
+      args '-u jenkins -v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
 
