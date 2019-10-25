@@ -3,6 +3,7 @@ pipeline {
     docker {
       image 'node:6-alpine'
     //  args '-u jenkins:jenkins'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
 
