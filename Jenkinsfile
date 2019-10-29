@@ -19,6 +19,23 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-hello-world']]])
             }
         }
+        stage('Maven Build'){
+            agent{
+                docker{
+                    image 'maven:3-alpine'
+                }
+                steps{
+                    sh 'ls'
+                    sh 'mvn clean install'
+                }
+            }
+        }
+        stage('Test report'){
+            agent any
+            steps{
+                
+            }
+        }
     }
     post {
     always {
