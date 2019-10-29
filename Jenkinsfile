@@ -31,8 +31,8 @@ pipeline {
         }
     }
     post {
-        sh 'ls'
     always {
+         sh 'ls'
 emailext (
      attachmentsPattern: './spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
