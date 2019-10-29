@@ -19,6 +19,7 @@ pipeline {
                 docker {
                  image 'maven:3-alpine'   
                  label 'master'
+                 reuseNode true
                 }
               } 
                 steps {
