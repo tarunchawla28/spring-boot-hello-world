@@ -33,7 +33,7 @@ pipeline {
     post {
     always {
 emailext (
-    emailext mimeType: 'text/html',
+    mimeType: 'text/html',
      //attachmentsPattern: 'spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """ ${FILE, path='spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html'} <p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
