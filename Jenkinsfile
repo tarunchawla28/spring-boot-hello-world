@@ -24,7 +24,7 @@ pipeline {
                 steps {
                     sh 'ls'
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
-                    sh 'mvn clean install'
+                    sh 'mvn clean install test surefire-report:report'
                    // junit 'build/reports/**/*.xml'
                     }
                 }   
