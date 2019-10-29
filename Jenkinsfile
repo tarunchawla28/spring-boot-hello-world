@@ -27,7 +27,7 @@ pipeline {
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
                     sh 'mvn clean install test surefire-report:report'
                         junit '**/*.xml'
-                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/surefire-reports/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
                         emailext (
      attachmentsPattern: '**/*.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
