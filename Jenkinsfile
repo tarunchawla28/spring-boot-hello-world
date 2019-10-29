@@ -15,17 +15,17 @@ pipeline {
             }
         }
         stage('Sonar Scan'){
+            environment {
+        scannerHome = tool 'SonarQubeScanner'
+    }
             agent {
-                docker{
-                    label 'master'
-                image 'maven:3-alpine'
-                }
+                label 'master'
                 
             }
             steps{
                 withSonarQubeEnv('sonarqube') {
                 dir("spring-boot-rest-services-with-unit-and-integration-tests"){
-                    sh "mvn sonar:sonar"
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
         }
             }
