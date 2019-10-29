@@ -16,8 +16,11 @@ pipeline {
         }
         stage('Sonar Scan'){
             agent {
-                label 'master'
+                docker{
+                    label 'master'
                 image 'maven:3-alpine'
+                }
+                
             }
             steps{
                 withSonarQubeEnv('sonarqube') {
