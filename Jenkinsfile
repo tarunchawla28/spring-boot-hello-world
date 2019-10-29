@@ -1,18 +1,18 @@
 pipeline {
     agent none
     stages {
-        stage('Example Build') {
-            agent { 
-                docker {
-                 image 'maven:3-alpine'       
+        //stage('Example Build') {
+          //  agent { 
+            //    docker {
+              //   image 'maven:3-alpine'       
               //   label 'slave01'
-                }
-              } 
-            steps {
-                echo 'Hello, Maven'
-                sh 'mvn --version'
-            }
-        }
+                //}
+              //} 
+            //steps {
+              //  echo 'Hello, Maven'
+               // sh 'mvn --version'
+            //}
+       // }
         stage('SCM Checkout'){
             agent any
             steps {
