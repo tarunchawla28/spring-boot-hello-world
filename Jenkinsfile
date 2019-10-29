@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Example Build') {
             agent { 
-                label 'slave01'
+               // label 'slave01'
                 docker 'maven:3-alpine'       
               } 
             steps {
