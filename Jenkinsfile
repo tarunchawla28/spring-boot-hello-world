@@ -1,40 +1,13 @@
 pipeline {
     agent none
     stages {
-        //stage('Example Build') {
-          //  agent { 
-            //    docker {
-              //   image 'maven:3-alpine'       
-              //   label 'slave01'
-                //}
-              //} 
-            //steps {
-              //  echo 'Hello, Maven'
-               // sh 'mvn --version'
-            //}
-       // }
         stage('SCM Checkout'){
             agent {
             label 'master'
             }
             steps {
-    checkout([$class: 'GitSCM',
-    branches: [
-     [name: '*/master']
-    ],
-    userRemoteConfigs: [
-     [url: 'https://github.com/tarunchawla28/spring-boot-examples']
-    ],
-    extensions: [
-
-     [$class: 'PathRestriction', excludedRegions: '', includedRegions: 'spring-boot-rest-services-with-unit-and-integration-tests' + '/.*'],
-     [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [
-      [$class: 'SparseCheckoutPath', path: '/' + 'spring-boot-rest-services-with-unit-and-integration-tests' + '/']
-     ]]
-
-    ],
-   ])             
-               }
+               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'spring-boot-rest-services-with-unit-and-integration-tests/']]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-examples']]])         
+            }
         }
         stage('Maven Build'){
             agent { 
