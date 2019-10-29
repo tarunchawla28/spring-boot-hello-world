@@ -40,7 +40,7 @@ pipeline {
     }
     post {
     always {
-        archiveArtifacts artifacts: '**/*.html'
+        archiveArtifacts artifacts: "**/*.html", onlyIfSuccessful: true
 emailext (
      attachmentsPattern: '**/*.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
