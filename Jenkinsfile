@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('Example Build') {
             agent { 
-                label 'slave01'
-                docker 'maven:3-alpine'       
+                docker {
+                 image 'maven:3-alpine'       
+                 label 'slave01'
+                }
               } 
             steps {
                 echo 'Hello, Maven'
