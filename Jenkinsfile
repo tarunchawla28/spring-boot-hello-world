@@ -31,6 +31,7 @@ pipeline {
         }
     }
     post {
+        sh 'ls'
     always {
 emailext (
      attachmentsPattern: './spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html',
