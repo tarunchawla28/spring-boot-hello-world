@@ -40,6 +40,9 @@ pipeline {
     }
     post {
     always {
+        agent {
+        label 'master'
+        }
          dir("spring-boot-rest-services-with-unit-and-integration-tests"){
 emailext (
      attachmentsPattern: '**/*.html',
