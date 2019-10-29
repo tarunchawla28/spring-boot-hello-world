@@ -20,7 +20,7 @@ pipeline {
             steps {
     checkout([$class: 'GitSCM',
     branches: [
-     [name: */master]
+     [name: '*/master']
     ],
     userRemoteConfigs: [
      [url: 'https://github.com/tarunchawla28/spring-boot-examples']
