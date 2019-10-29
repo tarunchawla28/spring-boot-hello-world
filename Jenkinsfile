@@ -23,7 +23,6 @@ pipeline {
             agent { 
                 docker {
                  image 'maven:3-alpine'       
-              //   label 'slave01'
                 }
               } 
                 steps {
