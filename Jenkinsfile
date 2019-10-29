@@ -24,7 +24,8 @@ pipeline {
         stage('Maven Build'){
             agent { 
                 docker {
-                 image 'maven:3-alpine'       
+                 image 'maven:3-alpine'   
+                 label 'master'
                 }
               } 
                 steps {
