@@ -40,10 +40,7 @@ pipeline {
     }
     post {
     always {
-        agent {
-        label 'master'
-        }
-         dir("spring-boot-rest-services-with-unit-and-integration-tests"){
+        archiveArtifacts artifacts: '**/*.html'
 emailext (
      attachmentsPattern: '**/*.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
@@ -51,7 +48,7 @@ emailext (
         <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
     to: "${env.recipientsList}"
     ) 
-         }
+         
         }
     }
 }
