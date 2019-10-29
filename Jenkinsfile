@@ -5,12 +5,18 @@ pipeline {
             agent { 
                 docker {
                  image 'maven:3-alpine'       
-                 label 'slave01'
+              //   label 'slave01'
                 }
               } 
             steps {
                 echo 'Hello, Maven'
                 sh 'mvn --version'
+            }
+        }
+        stage('SCM Checkout'){
+            agent any
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-hello-world']]])
             }
         }
     }
