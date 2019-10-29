@@ -40,7 +40,7 @@ pipeline {
     }
     post {
     always {
-        archiveArtifacts artifacts: 'spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html', onlyIfSuccessful: true
+        sh 'ls'
 emailext (
      attachmentsPattern: '**/*.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
