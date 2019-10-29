@@ -33,7 +33,6 @@ pipeline {
     post {
     always {
 emailext (
-    mimeType: 'text/html',
      attachmentsPattern: '**/surefire-report.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
