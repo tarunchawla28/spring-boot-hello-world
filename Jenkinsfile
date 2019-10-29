@@ -14,6 +14,19 @@ pipeline {
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'spring-boot-rest-services-with-unit-and-integration-tests/']]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-examples']]])         
             }
         }
+        stage('Sonar Scan'){
+            agent {
+                label 'master'
+                image 'maven:3-alpine'
+            }
+            steps{
+                withSonarQubeEnv('sonarqube') {
+                dir("spring-boot-rest-services-with-unit-and-integration-tests"){
+                    sh "mvn sonar:sonar"
+                }
+        }
+            }
+        }
         stage('Maven Build'){
             agent { 
                 docker {
