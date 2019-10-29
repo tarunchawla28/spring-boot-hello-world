@@ -20,21 +20,16 @@ pipeline {
             }
         }
         stage('Maven Build'){
-            agent {
+            agent { 
                 docker {
-                    image 'maven:3-alpine'
+                 image 'maven:3-alpine'       
+              //   label 'slave01'
                 }
-            }
+              } 
                 steps {
                     sh 'ls'
                     sh 'mvn clean install'
                 }
-        }
-        stage('Test report'){
-            agent any
-            steps {
-                sh 'ls'
-            }
         }
     }
     post {
