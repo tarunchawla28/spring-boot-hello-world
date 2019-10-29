@@ -35,7 +35,7 @@ pipeline {
 emailext (
      //attachmentsPattern: 'spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-      body: """ ${FILE, path="spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html"} <p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+      body: """ '${FILE, path="spring-boot-rest-services-with-unit-and-integration-tests/target/site/surefire-report.html"}' <p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
         <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
     to: "${env.recipientsList}"
     ) 
