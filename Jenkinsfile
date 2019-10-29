@@ -28,7 +28,9 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
         }
-               
+                 timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
             }
         }
         stage('Maven Build'){
@@ -42,9 +44,7 @@ pipeline {
                 steps {
                     sh 'ls'
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
-                         timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
+      
                     sh 'mvn clean install test surefire-report:report'
                        junit '**/*.xml'
                         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
