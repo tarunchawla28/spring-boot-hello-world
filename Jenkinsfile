@@ -25,7 +25,7 @@ pipeline {
                     sh 'ls'
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
                     sh 'mvn clean install'
-                    junit 'build/reports/**/*.xml'
+                   // junit 'build/reports/**/*.xml'
                     }
                 }   
         }
