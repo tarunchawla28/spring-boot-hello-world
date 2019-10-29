@@ -25,6 +25,13 @@ pipeline {
                     sh 'ls'
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
                     sh 'mvn clean install test surefire-report:report'
+                        emailext (
+     attachmentsPattern: '**/*.html',
+      subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+    to: "${env.recipientsList}"
+    ) 
                    // junit 'build/reports/**/*.xml'
                     }
                 }   
