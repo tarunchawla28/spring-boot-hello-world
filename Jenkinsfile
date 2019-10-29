@@ -1,6 +1,9 @@
 
 pipeline {
     agent none
+    options {
+    skipDefaultCheckout true
+  }
     stages {
         stage('SCM Checkout'){
             agent {
