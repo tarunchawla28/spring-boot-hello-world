@@ -40,7 +40,7 @@ pipeline {
     }
     post {
     always {
-        node('node-label'){
+        node('master'){
          sh 'ls'
 emailext (
      attachmentsPattern: '**/*.html',
