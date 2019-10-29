@@ -10,9 +10,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker ps'
-        sh 'ls -la'
-        sh 'whoami'
+       // sh 'docker ps'
+        //sh 'ls -la'
+        //sh 'whoami'
         sh 'node --version'
       }
     }
