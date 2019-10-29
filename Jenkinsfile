@@ -14,7 +14,9 @@ pipeline {
             //}
        // }
         stage('SCM Checkout'){
-            agent any
+            agent {
+            label 'master'
+            }
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-hello-world']]])
             }
