@@ -4,7 +4,7 @@ pipeline {
         stage('Example Build') {
             agent { 
                 label 'slave01'
-                //docker 'maven:3-alpine'       
+                docker 'maven:3-alpine'       
               } 
             steps {
                 echo 'Hello, Maven'
