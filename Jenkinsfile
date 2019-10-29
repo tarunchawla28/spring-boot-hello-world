@@ -33,7 +33,7 @@ pipeline {
         stage('Test report'){
             agent any
             steps {
-                
+                sh 'ls'
             }
         }
     }
