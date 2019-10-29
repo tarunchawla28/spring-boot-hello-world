@@ -20,7 +20,7 @@ pipeline {
             steps {
                 
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [     [$class: 'PathRestriction', excludedRegions: '', includedRegions: 'spring-boot-rest-services-with-unit-and-integration-tests' + '/.*'],
-,[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'spring-boot-rest-services-with-unit-and-integration-tests/']]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-examples']]])            
+,[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: '/spring-boot-rest-services-with-unit-and-integration-tests/']]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-examples']]])            
             }
         }
         stage('Maven Build'){
