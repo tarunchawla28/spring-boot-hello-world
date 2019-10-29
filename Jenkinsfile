@@ -40,14 +40,17 @@ pipeline {
     }
     post {
     always {
-        sh 'ls'
+        node('node-label'){
+         sh 'ls'
 emailext (
      attachmentsPattern: '**/*.html',
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
       body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
         <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
     to: "${env.recipientsList}"
-    ) 
+    )  
+        }
+       
          
         }
     }
