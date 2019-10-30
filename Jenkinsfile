@@ -43,9 +43,7 @@ pipeline {
                 }
                 
             }
-            environment {
-                MAVEN_HOME = '/usr/share/maven'
-           }
+
                 steps{
                     rtServer (
                         id: 'jenkins-artifactory-server',
@@ -69,6 +67,7 @@ pipeline {
                     sh 'mvn --version'
                     sh 'echo ${MAVEN_HOME}'
                         rtMavenRun(
+                            tool: 'maven:3-alpine'
                            pom: 'spring-boot-rest-services-with-unit-and-integration-tests/pom.xml',
                            goals: 'clean install', 
                            resolverId: 'resolver-id',
