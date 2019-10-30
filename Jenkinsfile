@@ -40,7 +40,7 @@ pipeline {
                 docker{
                 image 'maven:3-alpine'
                 label 'master'
-                    args '-v /root/.m2:/root/.m2'
+                args '-v $HOME/.m2:/root/.m2:z -u root'    
                 }
                 
             }
