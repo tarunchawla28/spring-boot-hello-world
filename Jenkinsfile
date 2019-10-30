@@ -46,7 +46,6 @@ pipeline {
             }
             environment{
               //  MAVEN_HOME=  '/opt/maven'
-                JAVA_HOME= 'javahome'
             }
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
