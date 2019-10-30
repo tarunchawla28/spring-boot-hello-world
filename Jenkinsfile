@@ -62,6 +62,7 @@ pipeline {
                        releaseRepo: 'libs-release-local',
                        snapshotRepo: 'libs-snapshot-local'
                     )
+                    sh 'echo Hello'
                         rtMavenRun(
                            pom: 'spring-boot-rest-services-with-unit-and-integration-tests/pom.xml',
                            goals: 'clean install', 
