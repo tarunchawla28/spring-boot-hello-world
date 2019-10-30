@@ -14,25 +14,25 @@ pipeline {
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'spring-boot-rest-services-with-unit-and-integration-tests/']]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-examples']]])         
             }
         }
-     //   stage('Sonar Scan'){
-      //      environment {
-       // scannerHome = tool 'SonarQubeScanner'
-    //}
-      //      agent {
-        //        label 'master'
+        stage('Sonar Scan'){
+            environment {
+        scannerHome = tool 'SonarQubeScanner'
+    }
+            agent {
+                label 'master'
                 
-          //  }
-           // steps{
-             //   withSonarQubeEnv('sonarqube') {
-            //    dir("spring-boot-rest-services-with-unit-and-integration-tests"){
-              //      sh "${scannerHome}/bin/sonar-scanner"
-               // }
-        //}
-          //       timeout(time: 10, unit: 'MINUTES') {
-         //   waitForQualityGate abortPipeline: true
-       // }
-         //   }
-        //}
+            }
+           steps{
+                withSonarQubeEnv('sonarqube') {
+                dir("spring-boot-rest-services-with-unit-and-integration-tests"){
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+        }
+                 timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+            }
+        }
         stage('Maven Build'){
             agent { 
                 docker {
