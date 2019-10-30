@@ -35,6 +35,7 @@ pipeline {
             }
         }
         stage('Artifactory create server') {
+            
             agent {
                 docker{
                 image 'maven:3-alpine'
@@ -42,6 +43,9 @@ pipeline {
                 }
                 
             }
+            environment {
+                MAVEN_HOME = '${MAVEN_HOME}'
+           }
                 steps{
                     rtServer (
                         id: 'jenkins-artifactory-server',
