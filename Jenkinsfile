@@ -44,9 +44,9 @@ pipeline {
                 }
                 
             }
-            //environment{
-             //   MAVEN_HOME=  '/opt/maven'
-            //}
+            environment{
+                MAVEN_HOME=  '/opt/maven'
+            }
                 steps{
                     rtServer (
                         id: 'jenkins-artifactory-server',
@@ -84,7 +84,7 @@ pipeline {
                 docker {
                  image 'maven:3-alpine'   
                  label 'master'
-                 reuseNode true
+              //   reuseNode true
                 }
               } 
                 steps {
