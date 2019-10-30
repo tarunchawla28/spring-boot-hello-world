@@ -40,13 +40,13 @@ pipeline {
                 docker{
                 image 'maven:3-alpine'
                 label 'master'
-                args '-v $HOME/.m2:/root/.m2:z -u root'    
+             //   args '-v $HOME/.m2:/root/.m2:z -u root'    
                 }
                 
             }
-            environment{
-                MAVEN_HOME=  '/opt/maven'
-            }
+            //environment{
+              //  MAVEN_HOME=  '/opt/maven'
+           // }
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
                        
@@ -74,6 +74,7 @@ pipeline {
                     sh 'ls'
                  //   sh 'ls spring-boot-rest-services-with-unit-and-integration-tests/' 
                         rtMavenRun(
+                            tool: maven-path
                            pom: 'pom.xml',
                            goals: 'clean install', 
                            resolverId: 'resolver-id',
