@@ -46,7 +46,7 @@ pipeline {
             }
             environment{
               //  MAVEN_HOME=  '/opt/maven'
-                JAVA_HOME= '/usr/lib/jvm/java-8-openjdk-amd64/bin/java'
+                JAVA_HOME= '/usr/lib/jvm/java-8-openjdk-amd64'
             }
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
