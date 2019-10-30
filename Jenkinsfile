@@ -69,6 +69,8 @@ pipeline {
                     )
                     sh 'mvn --version'
                     sh 'echo ${MAVEN_HOME}'
+                    sh 'ls'
+                    sh 'spring-boot-rest-services-with-unit-and-integration-tests/' 
                         rtMavenRun(
                            pom: 'spring-boot-rest-services-with-unit-and-integration-tests/pom.xml',
                            goals: 'clean install', 
