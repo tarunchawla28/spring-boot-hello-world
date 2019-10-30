@@ -48,6 +48,8 @@ pipeline {
                 MAVEN_HOME=  '/opt/maven'
             }
                 steps{
+                    dir("spring-boot-rest-services-with-unit-and-integration-tests"){
+                       
                     rtServer (
                         id: 'jenkins-artifactory-server',
                         url: 'http://52.49.120.57:8081/artifactory',
@@ -70,14 +72,15 @@ pipeline {
                     sh 'mvn --version'
                     sh 'echo ${MAVEN_HOME}'
                     sh 'ls'
-                    sh 'ls spring-boot-rest-services-with-unit-and-integration-tests/' 
+                 //   sh 'ls spring-boot-rest-services-with-unit-and-integration-tests/' 
                         rtMavenRun(
-                           pom: 'spring-boot-rest-services-with-unit-and-integration-tests/pom.xml',
+                           pom: 'pom.xml',
                            goals: 'clean install', 
                            resolverId: 'resolver-id',
                            deployerId: 'deployer-id'
                         )
                     sh 'mvn --version'
+                    }
                 }
                 
         }
