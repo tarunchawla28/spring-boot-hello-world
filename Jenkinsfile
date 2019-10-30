@@ -34,6 +34,49 @@ pipeline {
         }
             }
         }
+        
+          stage('Artifactory create server') {
+            
+            agent any
+            
+                steps{
+                    dir("spring-boot-rest-services-with-unit-and-integration-tests"){
+                       
+                    rtServer (
+                        id: 'jenkins-artifactory-server',
+                        url: 'http://52.49.120.57:8081/artifactory',
+                        credentialsId: 'artifactory-user',
+                        bypassProxy: false,
+                        timeout: 300
+                    )
+                    rtMavenResolver(
+                       id: 'resolver-id',
+                       serverId: 'jenkins-artifactory-server',
+                       releaseRepo: 'libs-release',
+                       snapshotRepo: 'libs-snapshot'
+                    )
+                    rtMavenDeployer(
+                       id: 'deployer-id',
+                       serverId: 'jenkins-artifactory-server',
+                       releaseRepo: 'libs-release-local',
+                       snapshotRepo: 'libs-snapshot-local'
+                    )
+                   // sh 'mvn --version'
+                    //sh 'echo ${MAVEN_HOME}'
+                  //  sh 'ls'
+                 //   sh 'ls spring-boot-rest-services-with-unit-and-integration-tests/' 
+                        rtMavenRun(
+                            tool: 'mavenpath',
+                           pom: 'pom.xml',
+                           goals: 'clean install', 
+                           resolverId: 'resolver-id',
+                           deployerId: 'deployer-id'
+                        )
+                    sh 'mvn --version'
+                    }
+                }
+                
+        }
       
         stage('Maven Build'){
             agent { 
