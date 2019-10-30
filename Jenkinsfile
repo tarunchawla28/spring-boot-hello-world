@@ -43,7 +43,9 @@ pipeline {
                 }
                 
             }
-
+            environment{
+                MAVEN_HOME=  '/opt/maven'
+            }
                 steps{
                     rtServer (
                         id: 'jenkins-artifactory-server',
