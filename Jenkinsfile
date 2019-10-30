@@ -62,6 +62,14 @@ pipeline {
                        releaseRepo: 'libs-release-local',
                        snapshotRepo: 'libs-snapshot-local'
                     )
+                    dir("spring-boot-rest-services-with-unit-and-integration-tests"){
+                        rtMavenRun(
+                           pom: 'pom.xml',
+                           goals: 'clean install', 
+                           resolverId: 'resolver-id',
+                           deployerId: 'deployer-id'
+                        )
+                    }
                 }
                 
         }
