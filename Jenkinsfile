@@ -36,19 +36,8 @@ pipeline {
         }
         stage('Artifactory create server') {
             
-            agent {
-                docker{
-                image 'maven:3-alpine'
-                label 'master'
-             //   args '-v $HOME/.m2:/root/.m2:z -u root'  
-                    args '-v /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64:z -u root'
-                }
-                
-            }
-            environment{
-              //  MAVEN_HOME=  '/opt/maven'
-                JAVA_HOME= '/usr/lib/jvm/java-8-openjdk-amd64'
-            }
+            agent any
+            
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
                        
@@ -71,9 +60,9 @@ pipeline {
                        releaseRepo: 'libs-release-local',
                        snapshotRepo: 'libs-snapshot-local'
                     )
-                    sh 'mvn --version'
-                    sh 'echo ${MAVEN_HOME}'
-                    sh 'ls'
+                   // sh 'mvn --version'
+                    //sh 'echo ${MAVEN_HOME}'
+                  //  sh 'ls'
                  //   sh 'ls spring-boot-rest-services-with-unit-and-integration-tests/' 
                         rtMavenRun(
                             tool: 'mavenpath',
