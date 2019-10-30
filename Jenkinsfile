@@ -77,7 +77,7 @@ pipeline {
                  //   sh 'ls spring-boot-rest-services-with-unit-and-integration-tests/' 
                         rtMavenRun(
                             tool: 'mavenpath',
-                           pom: 'pom.xml',
+                           pom: '/pom.xml',
                            goals: 'clean install', 
                            resolverId: 'resolver-id',
                            deployerId: 'deployer-id'
