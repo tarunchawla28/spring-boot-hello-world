@@ -46,7 +46,7 @@ pipeline {
                         id: 'jenkins-artifactory-server',
                         url: 'http://52.49.120.57:8081/artifactory',
                         credentialsId: 'artifactory-user',
-                        bypassProxy: false,
+                        bypassProxy: true,
                         timeout: 300
                     )
                     rtMavenResolver(
