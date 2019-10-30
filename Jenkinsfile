@@ -68,7 +68,7 @@ pipeline {
                            resolverId: 'resolver-id',
                            deployerId: 'deployer-id'
                         )
-                    
+                    sh 'mvn --version'
                 }
                 
         }
