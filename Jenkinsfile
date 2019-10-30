@@ -67,7 +67,7 @@ pipeline {
                     sh 'mvn --version'
                     sh 'echo ${MAVEN_HOME}'
                         rtMavenRun(
-                            tool: 'maven:3-alpine'
+                            tool: 'maven:3-alpine',
                            pom: 'spring-boot-rest-services-with-unit-and-integration-tests/pom.xml',
                            goals: 'clean install', 
                            resolverId: 'resolver-id',
