@@ -14,6 +14,7 @@ pipeline {
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'spring-boot-rest-services-with-unit-and-integration-tests/']]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarunchawla28/spring-boot-examples']]])         
             }
         }
+        
         stage('Sonar Scan'){
             environment {
         scannerHome = tool 'SonarQubeScanner'
@@ -32,6 +33,24 @@ pipeline {
             waitForQualityGate abortPipeline: true
         }
             }
+        }
+        stage('Artifactory create server') {
+            agent {
+                docker{
+                image 'maven:3-alpine'
+                label 'master'
+                }
+                steps{
+                    rtServer{
+                        id: 'jenkins-artifactory-server'
+                        url: 'http://52.49.120.57:8081/artifactory'
+                        credentialsId: 'artifactory-user'
+                        bypassProxy: false
+                        timeout: 300
+                    }
+                }
+            }
+                
         }
         stage('Maven Build'){
             agent { 
