@@ -50,9 +50,22 @@ pipeline {
                         bypassProxy: false,
                         timeout: 300
                     )
+                    rtMavenResolver(
+                       id: 'resolver-id',
+                       serverId: 'jenkins-artifactory-server',
+                       releaseRepo: 'libs-release',
+                       snapshotRepo: 'libs-snapshot'
+                    )
+                    rtMavenDeployer(
+                       id: 'deployer-id',
+                       serverId: 'jenkins-artifactory-server',
+                       releaseRepo: 'libs-release-local',
+                       snapshotRepo: 'libs-snapshot-local'
+                    )
                 }
                 
         }
+        stage('')
         stage('Maven Build'){
             agent { 
                 docker {
