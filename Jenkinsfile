@@ -44,7 +44,7 @@ pipeline {
                 
             }
             environment {
-                MAVEN_HOME = '${MAVEN_HOME}'
+                MAVEN_HOME = '/usr/share/maven'
            }
                 steps{
                     rtServer (
