@@ -65,7 +65,6 @@ pipeline {
                 }
                 
         }
-        stage('')
         stage('Maven Build'){
             agent { 
                 docker {
