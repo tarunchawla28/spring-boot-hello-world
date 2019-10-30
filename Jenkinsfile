@@ -40,7 +40,8 @@ pipeline {
                 docker{
                 image 'maven:3-alpine'
                 label 'master'
-             //   args '-v $HOME/.m2:/root/.m2:z -u root'    
+             //   args '-v $HOME/.m2:/root/.m2:z -u root'  
+                    args '-v /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64:z -u root'
                 }
                 
             }
