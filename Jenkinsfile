@@ -40,12 +40,13 @@ pipeline {
                 docker{
                 image 'maven:3-alpine'
                 label 'master'
+                    args '-v /root/.m2:/root/.m2'
                 }
                 
             }
-            environment{
-                MAVEN_HOME=  '/opt/maven'
-            }
+            //environment{
+             //   MAVEN_HOME=  '/opt/maven'
+            //}
                 steps{
                     rtServer (
                         id: 'jenkins-artifactory-server',
