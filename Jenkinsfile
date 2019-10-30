@@ -40,6 +40,8 @@ pipeline {
                 image 'maven:3-alpine'
                 label 'master'
                 }
+                
+            }
                 steps{
                     rtServer{
                         id: 'jenkins-artifactory-server'
@@ -49,7 +51,6 @@ pipeline {
                         timeout: 300
                     }
                 }
-            }
                 
         }
         stage('Maven Build'){
