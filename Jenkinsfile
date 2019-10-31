@@ -74,6 +74,9 @@ pipeline {
                            resolverId: 'resolver-id',
                            deployerId: 'deployer-id'
                         )
+                        rtPublishBuildInfo (
+                        serverId: 'jenkins-artifactory-server',
+                        )
                     sh 'mvn --version'
                     }
                 }
