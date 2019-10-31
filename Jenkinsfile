@@ -39,7 +39,7 @@ pipeline {
             
             agent any
               environment{
-                JAVA_HOME= 'javahome'
+                JAVA_HOME= '/usr/lib/jvm/java-8-openjdk-amd64'
               }
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
