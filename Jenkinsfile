@@ -46,7 +46,7 @@ pipeline {
                        sh 'java -version'
                     rtServer (
                         id: 'jenkins-artifactory-server',
-                        url: 'http://52.49.120.57:8081/artifactory',
+                        url: 'http://54.154.101.163:8081/artifactory',
                         credentialsId: 'artifactory-user',
                         bypassProxy: false,
                         timeout: 300
