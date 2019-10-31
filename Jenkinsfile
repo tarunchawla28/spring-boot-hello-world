@@ -22,7 +22,7 @@ pipeline {
                         ],
                         submoduleCfg: [],
                         userRemoteConfigs: [
-                            [url: 'https://github.com/tarunchawla28/spring-boot-examples']
+                            [url: 'https://github.com/tarunchawla28/yb-spring-boot-examples']
                         ]
                     ]
                 )         
