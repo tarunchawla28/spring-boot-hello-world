@@ -43,7 +43,7 @@ pipeline {
               }
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
-                       
+                       sh 'java -version'
                     rtServer (
                         id: 'jenkins-artifactory-server',
                         url: 'http://52.49.120.57:8081/artifactory',
