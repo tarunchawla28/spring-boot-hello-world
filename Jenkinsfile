@@ -1,8 +1,8 @@
 pipeline {
     agent none
-    options {
-    skipDefaultCheckout true
-}
+        options {
+            skipDefaultCheckout true
+        }
     stages {
         stage('SCM Checkout'){
             agent {
@@ -86,8 +86,7 @@ pipeline {
                         serverId: 'jenkins-artifactory-server',
                     )
                 }
-            }
-                
+            }  
         }
       
         stage('Maven Build'){
