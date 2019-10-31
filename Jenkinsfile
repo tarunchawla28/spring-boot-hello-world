@@ -38,7 +38,9 @@ pipeline {
           stage('Artifactory create server') {
             
             agent any
-            
+              environment{
+                JAVA_HOME= 'javahome'
+              }
                 steps{
                     dir("spring-boot-rest-services-with-unit-and-integration-tests"){
                        
